@@ -1,0 +1,16 @@
+<h3>
+    Choose Account to Delete
+</h3>
+<select [(ngModel)]="selectedAccount">
+    <option *ngFor="let account of userAccounts" [ngValue]="account">
+        acc # {{account.id}}, ${{account.balance}}
+    </option>
+</select>
+
+<p  *ngIf="selectedAccount">Selected account: {{selectedAccount.id}}</p>
+<div>
+    <button class="button" (click)="deleteAccount()" [disabled]="!selectedAccount">
+        Delete Account
+    </button>
+</div>
+<p *ngIf="accountDeleted">Account Deleted</p>

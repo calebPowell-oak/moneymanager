@@ -1,0 +1,9 @@
+<p>Enter intial balance</p>
+<input [(ngModel)]="newBalance" type="number">
+
+<button type="button" (click)="makeNewAccount()" [disabled]="!newBalance">Create Account</button>
+<p *ngIf="createdAccount">
+    Created Account #{{createdAccount.id}} with balance ${{createdAccount.balance}}
+</p>
+<br>
+<br>

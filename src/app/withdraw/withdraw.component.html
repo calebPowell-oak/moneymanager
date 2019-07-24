@@ -1,0 +1,12 @@
+<h3>Withdraw</h3>
+<p> This space left intentionally blank</p>
+
+<select [(ngModel)]="selectedAccount">
+    <option *ngFor="let account of userAccounts" [ngValue]="account">
+        acc # {{account.id}}, ${{account.balance}}
+    </option>
+</select>
+<input [(ngModel)]="withdrawAmount" type="number">
+<div>
+    <button class="button" (click)="withdraw()">Withdraw</button>
+</div>

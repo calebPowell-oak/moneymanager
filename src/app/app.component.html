@@ -1,0 +1,93 @@
+
+<div>
+  <!-- <nav *ngIf="loggedIn">
+    <div class="container-fluid" *ngIf="loggedIn">
+      <div class="row">
+      <button (click)="setCurrentPage('deposit')">Deposit</button>
+      <button (click)="setCurrentPage('withdraw')">Withdraw</button>
+      <button routerLink='/addaccount' class="nav">Add Account</button>
+      <button routerLink='/deleteaccount' class="nav">Delete Account</button>
+      <button routerLink='/transactions' class="nav">Transactions</button>
+      </div>
+    </div>
+  </nav> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{ title }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="setCurrentPage('deposit')">Deposit</button>
+      </li>
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="setCurrentPage('withdraw')">Withdraw</button>
+      </li>
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="setCurrentPage('addaccount')">Add Account</button>
+      </li>
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="setCurrentPage('deleteaccount')">Delete Account</button>
+      </li>
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="setCurrentPage('transactions')">Transactions</button>
+      </li>
+      <li class="nav-item" *ngIf="userService.loggedIn">
+        <button class="btn btn-primary" (click)="userService.clearUser()">Log Out</button>
+      </li>
+      <!-- <li class="nav-item"*ngIf="!userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPage('login')">Login</button>
+      </li> -->
+
+    </ul>
+  </div>
+</nav>
+<app-deposit *ngIf="currentPage =='deposit' && userService.loggedIn"></app-deposit>
+<app-withdraw *ngIf="currentPage =='withdraw' && userService.loggedIn"></app-withdraw>
+<app-add-account *ngIf="currentPage == 'addaccount' && userService.loggedIn"></app-add-account>
+<app-delete-account *ngIf="currentPage == 'deleteaccount' && userService.loggedIn"></app-delete-account>
+<app-transactions *ngIf="currentPage == 'transactions' && userService.loggedIn"></app-transactions>
+<app-login *ngIf="!userService.loggedIn"></app-login>
+<app-create-user *ngIf="!userService.loggedIn"></app-create-user>
+
+    <!-- <ul class="nav justify-content-center">
+        <li class="nav-pills">
+          <a class="nav-link active" href="/deposit">Deposit</a>
+        </li>
+        <li class="nav-pills">
+          <a class="nav-link active" href="/withdraw">Withdraw</a>
+        </li>
+        <li class="nav-pills">
+          <a class="nav-link active" href="/addaccount">Add Account</a>
+        </li>
+        <li class="nav-pills">
+            <a class="nav-link active" href="/deleteaccount">Delete Account</a>
+          </li>
+        <li class="nav-pills">
+            <a class="nav-link active" href="/transactions">Transfers</a>
+          </li>
+      </ul>
+    <h1>
+  </h1>
+   -->
+
+  <!-- <p>I am the root component and I should have stuff like a nav bar. I'll keep track of who's logged in.</p>
+  <p>The current user first name is: {{loggedIn ? currentUser.firstName : 'none'}} (user object: {{loggedIn ? currentUser : 'none'}})</p>
+  <p>Logged in? : {{loggedIn}}</p> -->
+
+  <!-- <button (click)="toggleLogin()">Toggle Login</button>
+  <div *ngIf="loggedIn">
+    Now Logged In
+  </div> -->
+</div>
+<!-- <app-login [loginStatus]='loggedIn'></app-login> -->
+<!-- <app-create-user [loginStatus]='loggedIn'></app-create-user> -->
+<!-- <router-outlet *ngIf='loggedIn'>
+  <p> -->
+    <!-- I am the router outlet. My contents (below) should 
+    only be displayed when the user is logged in. -->
+  <!-- </p>
+</router-outlet> -->
