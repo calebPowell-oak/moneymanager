@@ -13,7 +13,7 @@ import { TransactionService } from 'src/service/transaction.service';
 })
 export class TransactionsComponent implements OnInit {
 
-  account: Account;
+  //account: Account;
   accounts: Account[];
   userAccounts: Account[];
   currentAccountFrom: Account;
@@ -31,9 +31,9 @@ export class TransactionsComponent implements OnInit {
     this.getUser();
   }
 
-  updateAccount(){
-    this.accountServiceService.getAccount().subscribe(account => this.account = account);
-  }
+  // updateAccount(){
+  //   this.accountServiceService.getAccount().subscribe(account => this.account = account);
+  // }
 
   getAccounts(){
     this.accountServiceService.getAccounts().subscribe(accounts => this.accounts = accounts);
