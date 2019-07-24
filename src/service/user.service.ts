@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class UserService {
 
   currentUser: User;
   loggedIn: boolean; 
+  baseUrl = environment.baseUrl;
+
 
   constructor(private http: HttpClient) {
     this.loggedIn = false;
@@ -28,11 +31,12 @@ export class UserService {
   }
 
   login(tryUser: User): Observable<User>{
-    return this.http.post<User>('/proxy/api/users/login', tryUser);
+    console.log(this.baseUrl);
+    return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser);
   }
 
   createUser(newUser: User): Observable<User>{
-    return this.http.post<User>('/proxy/api/users', newUser);
+    return this.http.post<User>(this.baseUrl + '/api/users', newUser);
   }
 
   setUser(user: User){

@@ -23,7 +23,7 @@ export class AppComponent {
     email: 'z'
   }
 
-  constructor(private userService: UserService){
+  constructor(public userService: UserService){
   }
 
   ngOnInit() {
