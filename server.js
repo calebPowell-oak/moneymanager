@@ -11,10 +11,10 @@ const forceSSL = function () {
         next();
     }
 }
-app.use(express.static(__dirname + '/dist/moneymanager'));
+app.use(express.static(__dirname + '/dist/money-app'));
 
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/dist/moneymanager/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/money-app/index.html'));
 });
 // Start the app by listening on the default
 // Heroku port
