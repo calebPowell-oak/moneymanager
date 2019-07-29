@@ -1,4 +1,16 @@
-#card-img-top {
+/* #card-img-top {
     max-width: 20%;
     height: auto;
+} */
+#dropdown{
+    padding-left: 3.5%
+}
+
+#drop1{
+    max-width: 100px;
+}
+
+#drop2{
+    /* padding-left: 30%; */
+    max-width: 100px;
 }
