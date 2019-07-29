@@ -1,6 +1,9 @@
-<h3>Create New User</h3>
-
-<form>
+<div class="row" style="margin-top: 10%; margin-bottom: auto;" >
+  <img class="card-img-top" src="assets/create-user.svg" class="mx-auto d-block" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Register</h5>
+    <p class="card-text">Please enter your information.</p>
+    <form>
         Email:    <input id="emailCreateUser" type="email" name="email" size="35"><br>
         Password: <input id="passwordCreateUser" type="password" name="password" size="35"><br>
         First: <input id="first" type="text" name="first" size="35"><br>
@@ -8,3 +11,10 @@
         User: <input id="user" type="text" name="user" size="35"><br>
         <button (click)="createUser()" alt="Submit" width="48" height="48">Submit</button>
       </form>
+  </div>
+</div>
+<p *ngIf="createdAccount">
+Created Account #{{createdAccount.id}} with balance ${{createdAccount.balance}}
+</p>
+<br>
+<br>

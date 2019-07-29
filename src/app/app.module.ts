@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { UserServiceService } from '../service/user-service.service';
 import { AccountServiceService } from '../service/account-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SplashComponent } from './splash/splash.component';
+import { LoginSplashComponent } from './login-splash/login-splash.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     DepositComponent,
     AddAccountComponent,
     DeleteAccountComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    SplashComponent,
+    LoginSplashComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,8 @@ export class AppComponent {
   loggedIn: boolean;
   currentUser: User;
   currentPage: string = 'login'; 
+  currentPageLoggedIn: string = 'splash';
+  currentPageNotLoggedIn: string = 'login-splash';
 
   caleb: User = {
     id: '3',
@@ -47,9 +49,19 @@ export class AppComponent {
     //console.log("userService.loggedIn = " + this.userService.loggedIn);
   }
 
-  setCurrentPage(newPage: string){
-    this.currentPage = newPage; 
+  setCurrentPageLoggedIn(newPage: string){
+    this.currentPageLoggedIn = newPage;
+    // this.currentPage = newPage; 
   }
 
+  setCurrentPageNotLoggedIn(newPage: string){
+    this.currentPageNotLoggedIn = newPage; 
+  }
+
+  logout(){
+    this.currentPageLoggedIn = 'splash';
+    this.currentPageNotLoggedIn = 'login-splash';
+    this.userService.clearUser();
+  }
 
 }
