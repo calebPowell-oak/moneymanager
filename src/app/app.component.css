@@ -1,45 +1,40 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-/* a.nav {
-    font-family: 'Roboto', sans-serif;
-    color: rgb(92, 114, 161);
-    padding: 1%;
-    margin: 1%;
-    border-radius: 5px;
-    background-color: rgb(42, 134, 255);
-    text-decoration: none;
-    
-} */
-.bg-light{
-    background-color: #014fa2 !important;
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap'); 
+@import url('https://fonts.googleapis.com/css?family=Heebo&display=swap');
+ 
+  #navbar{
+     background-color: rgba(129, 105, 75, 0) !important;
+     background-image: url("/assets/floor-1846849.jpg") !important;
+     background-position: bottom center;
+     background-size: cover;
+     background-repeat: no-repeat;
+     -webkit-box-shadow: -1px 6px 6px 1px rgba(0,0,0,0.29); 
+     box-shadow: -1px 6px 6px 1px rgba(0,0,0,0.29);
+     border-collapse: collapse;
+  }
+ 
+  .navbar .navbar-brand {
+    color: #f8fbfb;
+  }
+  .navbar .navbar-brand:hover,
+  .navbar .navbar-brand:focus {
+    color: #f8fbfb;
+  }
+  .navbar .navbar-text {
+    color: #f8fbfb;
+  }
+ 
+  .btn {
+      background-color: darkolivegreen !important;
+      border-color: rgb(80, 100, 44) !important;
+  }
+  .navbar .navbar-brand {
+    padding-top: 5px;
+    width: 220px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 40px;
+    font-optical-sizing: 30px;
 }
-.navbar-brand{
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px
-}
-.nav-item{
-    margin-left:10px;
-    }
-
-h1 {
-    font-family: 'Roboto', serif;
-}
-
-p {
-    font-family: 'Roboto', sans-serif;
-}
-
-
-
-/* nav {
-    padding: 2%;
-    background-color: rgb(48, 99, 211);
-    line-height: 220%;
-} */
-
-
-/* .router {
-    font-family: 'Roboto', sans-serif;
-    text-align: left;
-    margin-left: 20px
+/* #app-buttons{
+    -webkit-box-shadow: -1px 6px 6px 1px rgba(0,0,0,0.29); 
+    box-shadow: -1px 6px 6px 1px rgba(0,0,0,0.29);
 } */

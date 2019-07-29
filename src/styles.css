@@ -1,41 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-body {
-    background-color: rgb(220, 236, 247);
-    text-align: center;
-}
 
-p {
-    font-family: 'Roboto', sans-serif;
-}
-
-button {
-    color: #fff;
-    background-color:rgb(48, 119, 211);
-    border-color: #63afff;
-    font-family: 'Roboto', sans-serif;
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-} */
-/* body {
-background-image: url("https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241_1280.jpg");
-background-repeat: no-repeat; 
-background-position: center; 
-background-color: dimgray;
-}
-
-nav{
-
-} */
+ body {
+    background-image: url("assets/money-2724241.jpg");
+    background-position: top center;
+    /* background-position-y: %; */
+    background-size: 100% 112%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
