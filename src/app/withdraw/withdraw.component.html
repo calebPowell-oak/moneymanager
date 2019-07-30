@@ -1,16 +1,22 @@
-<div class="row" style="margin-top: 10%; margin-bottom: auto;" >
-    <img src="" class="mx-auto d-block" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Withdraw</h5>
-      <p class="card-text">Select the account from which you would like to withdraw funds.</p>
-      <select [(ngModel)]="selectedAccount">
-        <option *ngFor="let account of userAccounts" [ngValue]="account">
-            acc # {{account.id}}, ${{account.balance}}
-        </option>
-    </select>
-    <input [(ngModel)]="withdrawAmount" type="number">
-    <div>
-        <button class="button" (click)="withdraw()">Withdraw</button>
+<div class="row">
+    <div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
+        <h3 style="text-align: center;">Withdraw</h3>
+        
+        <p>Select Account:</p>
+        <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedAccount">
+            <option *ngFor="let account of userAccounts" [ngValue]="account">
+                acc # {{account.id}}, ${{account.balance}}
+            </option>
+        </select>
+
+        <form class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input [(ngModel)]="withdrawAmount" type="number" placeholder="enter amount" class="form-control" aria-label="Amount">
+            </div>
+            <button class="btn btn-primary col-md-6 offset-md-3" (click)="withdraw()" style="margin-top: 3%;">Withdraw</button>
+        </form>
     </div>
-    </div>
-  </div>
+</div>
