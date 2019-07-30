@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/model/user';
 import { UserService } from '../../service/user.service';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-create-user',
@@ -13,7 +14,8 @@ export class CreateUserComponent implements OnInit {
 
 user: User;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,10 @@ user: User;
     passwordHash: passwordstring,
     email: emailstring};
 
-    this.userService.createUser(this.user).subscribe(newUser => this.userService.setUser(newUser));
+    this.userService.createUser(this.user).subscribe(
+      newUser => this.userService.setUser(newUser),
+      err => {console.log(err.status);
+        this.messageService.setMessage(err.status);
+      });
     }
   }

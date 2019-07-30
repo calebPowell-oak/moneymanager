@@ -49,6 +49,11 @@
           <app-login-splash *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login-splash'"></app-login-splash>
         </div>
       </div>
+      <div *ngIf="this.messageService.message" class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
+        <div class="card col-md-4" style=" margin-left: 33%;">
+          <app-message-display></app-message-display>
+        </div>
+      </div>
          
 
   <button (click)="toggleLogin()">Toggle Login</button>
