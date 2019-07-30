@@ -18,6 +18,7 @@ import { AccountServiceService } from '../service/account-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SplashComponent } from './splash/splash.component';
 import { LoginSplashComponent } from './login-splash/login-splash.component';
+import { MessageDisplayComponent } from './message-display/message-display.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginSplashComponent } from './login-splash/login-splash.component';
     DeleteAccountComponent,
     TransactionsComponent,
     SplashComponent,
-    LoginSplashComponent
+    LoginSplashComponent,
+    MessageDisplayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -47,5 +48,12 @@ export class UserService {
   clearUser(){
     delete this.currentUser;
     this.loggedIn = false;
+  }
+
+  private handleError<T> (operation = 'operation', result?: T){
+    return(error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    }
   }
 }
