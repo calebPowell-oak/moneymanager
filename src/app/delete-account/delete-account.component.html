@@ -1,20 +1,21 @@
-<!-- <p *ngIf="accountDeleted">Account Deleted</p> -->
-<div class="row" style="margin-top: 10%; margin-bottom: auto;" >
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Delete Account</h5>
-      <p class="card-text">Select the account that you would like to delete.</p>
-      <select [(ngModel)]="selectedAccount">
-        <option *ngFor="let account of userAccounts" [ngValue]="account">
-            acc # {{account.id}}, ${{account.balance}}
-        </option>
-    </select>
-    
-    <p  *ngIf="selectedAccount">Selected account: {{selectedAccount.id}}</p>
-    <div>
-        <button class="button" (click)="deleteAccount()" [disabled]="!selectedAccount">
-            Delete Account
-        </button>
+<div class="row">
+    <div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
+        <h3 style="text-align: center;">
+            Choose Account to Delete:
+        </h3>
+        <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedAccount">
+            <option *ngFor="let account of userAccounts" [ngValue]="account">
+                acc # {{account.id}}, ${{account.balance}}
+            </option>
+        </select>
+        
+        <p  *ngIf="selectedAccount">Selected account: {{selectedAccount.id}}</p>
+        <div style="margin: 2%;">
+            <button class="col-md-6 offset-md-3 btn btn-primary" (click)="deleteAccount()" [disabled]="!selectedAccount">
+                Delete Account
+            </button>
+        </div>
+        <p *ngIf="accountDeleted">Account Deleted</p>
+        
     </div>
-    </div>
-  </div>
+</div>
