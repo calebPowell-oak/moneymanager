@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user'
 import { UserService } from '../service/user.service';
+import { MessageService} from '../service/message.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent {
     email: 'z'
   }
 
-  constructor(public userService: UserService){
+  constructor(public userService: UserService,
+    public messageService: MessageService){
   }
 
   ngOnInit() {

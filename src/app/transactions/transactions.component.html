@@ -1,35 +1,29 @@
-<div class="row" style="margin-top: 10%; margin-bottom: auto;" >
-        <img class="card-img-top" src="" class="mx-auto d-block"  alt="...">
-        <div class="card-body">
-          <h2 class="card-title">Transfer</h2>
-          <p class="card-text">Please choose the accounts you would like to transfer funds between</p>
-          <div class="container-fluid" id="dropdown">
-            <div class="col=md" id="drop1">
-                <select [(ngModel)]="currentAccountFrom" (ngModelChange)="setCurrentAccountFrom(currentAccountFrom)">Transfer from
-                    <option *ngFor="let userAcc of userAccounts" [ngValue]="userAcc">
-                        {{userAcc.id}}, ${{userAcc.balance}}
-                    </option>
-                </select>
-            </div>
-            <div class="col=md" id="drop2">
-                    <select [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">Transfer to
-                        <option *ngFor="let acc of accounts" [ngValue]="acc">
-                            {{acc.id}}, ${{acc.balance}}
-                        </option>
-                    </select>
-            </div>
-        </div>
-            <div>
-                Transfer Amount: $<input [(ngModel)]="transferAmount" type="number">
-            </div>
-            
-                <button type="submit" [disabled]="!currentAccountFrom || !currentAccountTo || !transferAmount" (click)="makeTransaction()">Transfer</button>
-            <div>
-                Amonut transfered: {{transferAmount}}   
-            </div>
-            Balance: <p *ngIf="currentAccountFrom">{{currentAccountFrom.balance}}</p>
-      </div>
-</div> 
-<button (click)="clearAccount()">Clear</button>
-<br>
-<br>
+<div class="row">
+    <div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
+        <h3>Transfer</h3>
+
+        <label><p>From Account:</p></label>
+        <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountFrom" (ngModelChange)="setCurrentAccountFrom(currentAccountFrom)">
+            <option *ngFor="let userAcc of userAccounts" [ngValue]="userAcc">
+                {{userAcc.id}}, ${{userAcc.balance}}
+            </option>
+        </select>
+        
+        <label><p>To Account:</p></label>
+        <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
+            <option *ngFor="let acc of accounts" [ngValue]="acc">
+                {{acc.id}}, ${{acc.balance}}
+            </option>
+        </select>
+        
+        <form class="form-group">
+            <input class="form-control" [(ngModel)]="transferAmount" type="number" placeholder="Transfer Amount">
+            <p>Amount transfered:</p> {{transferAmount}}
+            <button type="submit" [disabled]="!currentAccountFrom || !currentAccountTo || !transferAmount" 
+                class="btn btn-primary col-md-6 offset-md-3" (click)="makeTransaction()">Transfer</button>
+        </form>
+        
+            <p>Balance:</p> <p *ngIf="currentAccountFrom">{{currentAccountFrom.balance}}</p>
+        <button class="btn btn-primary" style="margin: 2%;" (click)="clearAccount()">Clear</button>
+    </div>
+</div>
