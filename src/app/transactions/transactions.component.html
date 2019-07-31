@@ -16,11 +16,11 @@
             </option>
         </select>
         
+        <label><p>Amount Transfered:</p></label>
         <form class="form-group">
-            <input class="form-control" [(ngModel)]="transferAmount" type="number" placeholder="Transfer Amount">
-            <p>Amount transfered:</p> {{transferAmount}}
+            <input class="form-control" [(ngModel)]="transferAmount" type="number" placeholder="Transfer Amount" name="transferAmountInput">
             <button type="submit" [disabled]="!currentAccountFrom || !currentAccountTo || !transferAmount" 
-                class="btn btn-primary col-md-6 offset-md-3" (click)="makeTransaction()">Transfer</button>
+                class="btn btn-primary col-md-6 offset-md-3" style="margin-top: 2%;" (click)="makeTransaction()">Transfer</button>
         </form>
         
             <p>Balance:</p> <p *ngIf="currentAccountFrom">{{currentAccountFrom.balance}}</p>

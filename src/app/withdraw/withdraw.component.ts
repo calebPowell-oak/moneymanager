@@ -31,7 +31,7 @@ export class WithdrawComponent implements OnInit {
   }
 
   withdraw(){
-    this.transactionService.withdraw(this.currentUser.id, this.withdrawAmount).subscribe(() => this.getUserAccounts())
+    this.transactionService.withdraw(String(this.selectedAccount.id), this.withdrawAmount).subscribe(() => this.getUserAccounts())
   }
 
 }

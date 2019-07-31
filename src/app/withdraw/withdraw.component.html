@@ -14,7 +14,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
                 </div>
-                <input [(ngModel)]="withdrawAmount" type="number" placeholder="enter amount" class="form-control" aria-label="Amount">
+                <input [(ngModel)]="withdrawAmount" type="number" placeholder="enter amount" class="form-control" aria-label="Amount" name="withdrawNumber">
             </div>
             <button class="btn btn-primary col-md-6 offset-md-3" (click)="withdraw()" style="margin-top: 3%;">Withdraw</button>
         </form>
