@@ -14,5 +14,10 @@
                 <button type="submit" class="btn btn-primary col-md-4 offset-md-4" (click)="login()">Submit</button>
             </form>
         </div>
+        <div>
+            <p class="error-message" *ngIf="this.messageService.message">
+                {{this.messageService.message}}
+            </p>
+        </div>
     </div>
 </div>

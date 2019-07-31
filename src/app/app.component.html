@@ -45,11 +45,11 @@
 <app-splash *ngIf="userService.loggedIn && currentPageLoggedIn == 'splash'"></app-splash>
 <app-login-splash *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login-splash'"></app-login-splash>
 
-<div *ngIf="this.messageService.message" class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
+<!-- <div *ngIf="this.messageService.message" class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
   <div class="card col-md-4 offset-md-4">
     <app-message-display></app-message-display>
   </div>
-</div>
+</div> -->
         
 <!-- <button (click)="toggleLogin()">Toggle Login</button>
 <div *ngIf="loggedIn">

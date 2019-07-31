@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user';
+import { User} from '../model/user';
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class UserService {
   baseUrl = environment.baseUrl;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private messageService: MessageService) {
     this.loggedIn = false;
     // this.currentUser = {
     //   id: '17',
@@ -33,7 +35,14 @@ export class UserService {
 
   login(tryUser: User): Observable<User>{
     console.log(this.baseUrl);
-    return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser);
+    // let badUser: User;
+    // badUser.id = '-1';
+    return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser).pipe(
+      catchError(err => {
+        this.messageService.setMessage(this.getLoginMessage(err.status));
+       return of(new User())
+      })
+    );
   }
 
   createUser(newUser: User): Observable<User>{
@@ -50,10 +59,28 @@ export class UserService {
     this.loggedIn = false;
   }
 
-  private handleError<T> (operation = 'operation', result?: T){
-    return(error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
+  getLoginMessage(status: number): string{
+    if(status == 422){
+      return "invalid username or password";
+    }
+    else{
+      return "problem connecting to server";
     }
   }
+
+  // private handleLoginError<User> ( ){
+  //   let badUser = new User();
+  //   badUser = {
+  //   id: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   userName: '',
+  //   passwordHash: '',
+  //   email: ''};
+  //   }
+  //   return(error: any): Observable<User> => {
+  //     console.error(error);
+  //     return of(badUser);
+  //   }
+  // }
 }

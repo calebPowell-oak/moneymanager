@@ -52,15 +52,18 @@ export class AppComponent {
   }
 
   setCurrentPageLoggedIn(newPage: string){
+    this.messageService.clearMessage();
     this.currentPageLoggedIn = newPage;
     // this.currentPage = newPage; 
   }
 
   setCurrentPageNotLoggedIn(newPage: string){
+    this.messageService.clearMessage();
     this.currentPageNotLoggedIn = newPage; 
   }
 
   logout(){
+    this.messageService.clearMessage();
     this.currentPageLoggedIn = 'splash';
     this.currentPageNotLoggedIn = 'login-splash';
     this.userService.clearUser();
