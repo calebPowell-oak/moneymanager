@@ -25,7 +25,7 @@ export class TransactionService {
   public deposit(toAccountId: number, amount: number, userId: number): Observable<any>{
     let transaction: Transaction = {fromAccountId:9999, toAccountId:toAccountId,
       amount:amount, memo: "this space left blank", userId: userId};
-    console.log("making deposit");
+    console.log("making deposit for " + amount);
     return this.http.post(this.baseUrl + "/api/transaction/deposit", transaction);
   }
 
