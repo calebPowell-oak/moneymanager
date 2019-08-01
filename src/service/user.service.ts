@@ -46,7 +46,13 @@ export class UserService {
   }
 
   createUser(newUser: User): Observable<User>{
-    return this.http.post<User>(this.baseUrl + '/api/users', newUser);
+    return this.http.post<User>(this.baseUrl + '/api/users', newUser).pipe(
+      catchError(err =>{
+        this.messageService.setMessage(this.getCreateUserMessage(err.status));
+        console.log("user service message: " + this.messageService.message)
+        return of(new User())
+      })
+    );
   }
 
   setUser(user: User){
@@ -65,6 +71,15 @@ export class UserService {
     }
     else{
       return "problem connecting to server";
+    }
+  }
+
+  getCreateUserMessage(status: number): string{
+    if(status == 400){
+      return "Username is already taken";
+    }
+    else{
+      return "problem connecting to server" + status;
     }
   }
 

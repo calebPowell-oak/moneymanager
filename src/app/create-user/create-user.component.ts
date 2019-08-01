@@ -50,7 +50,12 @@ user: User;
       email: emailstring
     };
     if(emailstring && passwordstring && firstName && lastName && userName){
-      this.userService.createUser(this.user).subscribe(newUser => this.userService.setUser(newUser));
+      this.userService.createUser(this.user).subscribe(newUser => {
+        if(newUser.id){
+          this.userService.setUser(newUser);
+        }
+      });
+      console.log(this.messageService.message);
     }
     else {
       console.log("empty shit")
