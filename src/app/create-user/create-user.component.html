@@ -6,24 +6,32 @@
                 <div class="form-group">
                     <label for="emailCreateUser"><p>Email address</p></label>
                     <input type="email" class="form-control" id="emailCreateUser" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label class="missing-info" *ngIf="emptyEmail">* required field</label>
                     <small id="emailHelp" class="form-text text-muted"><p>We'll never share your email with anyone else.</p></small>
                 </div>
                 <div class="form-group">
                     <label for="passwordCreateUser"><p>Password</p></label>
                     <input type="password" class="form-control" id="passwordCreateUser" placeholder="Password">
+                    <label class="missing-info" *ngIf="emptyPassword">* required field</label>
                 </div>
                 <div class="form-group">
                     <label for="firstNameCreateUser"><p>First Name</p></label>
                     <input type="text" class="form-control" id="firstNameCreateUser" placeholder="First Name">
+                    <label class="missing-info" *ngIf="emptyFirstName">* required field</label>
                 </div>
                 <div class="form-group">
                     <label for="lastNameCreateUser"><p>Last Name</p></label>
                     <input type="text" class="form-control" id="lastNameCreateUser" placeholder="Last Name">
+                    <label class="missing-info" *ngIf="emptyLastName">* required field</label>
                 </div>
                 <div class="form-group">
                     <label for="userNameCreateUser"><p>Username</p></label>
                     <input type="text" class="form-control" id="userNameCreateUser" placeholder="Username">
+                    <label class="missing-info" *ngIf="emptyUserName">* required field</label>
                 </div>
+                <p class="error-message" *ngIf="this.messageService.message">
+                        {{this.messageService.message}}
+                    </p>
                 <button type="submit" class="btn btn-primary col-md-4 offset-md-4" (click)="createUser()">Submit</button>
             </form>
         </div>
