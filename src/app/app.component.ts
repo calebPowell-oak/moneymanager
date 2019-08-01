@@ -31,9 +31,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-   this.loggedIn = this.userService.loggedIn; 
-    // this.toggleLogin();
-    // this.userService.setUser(this.caleb);
+	this.userService.checkCookies();
+   this.loggedIn = this.userService.loggedIn;
   }
 
   toggleLogin(){

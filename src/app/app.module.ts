@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplashComponent } from './splash/splash.component';
 import { LoginSplashComponent } from './login-splash/login-splash.component';
 import { MessageDisplayComponent } from './message-display/message-display.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { MessageDisplayComponent } from './message-display/message-display.compo
     HttpClientModule,
     FormsModule
   ],
-  providers: [AccountServiceService, UserServiceService],
+  providers: [AccountServiceService, UserServiceService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

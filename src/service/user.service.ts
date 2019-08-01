@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { MessageService } from './message.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,9 @@ export class UserService {
   loggedIn: boolean; 
   baseUrl = environment.baseUrl;
 
-
   constructor(private http: HttpClient,
-    private messageService: MessageService) {
+	private messageService: MessageService,
+	private cookies: CookieService) {
     this.loggedIn = false;
     // this.currentUser = {
     //   id: '17',
@@ -31,6 +32,25 @@ export class UserService {
 
   getUser(): User{
     return this.currentUser;
+  }
+
+  checkCookies(){
+	if(this.cookies.check('userinfo')){
+		let content: string = this.cookies.get('userinfo');
+		let user: User = {id: '',
+			firstName: '',
+			lastName: '',
+			userName: content.split('\n')[0],
+			passwordHash: content.split('\n')[1],
+			email: ''
+		};
+		
+		this.login(user);
+	}
+  }
+
+  setCookies(user: User){
+	  this.cookies.set('userinfo', user.userName + '\n' + user.passwordHash);
   }
 
   login(tryUser: User): Observable<User>{

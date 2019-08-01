@@ -29,12 +29,14 @@ export class LoginComponent implements OnInit {
     lastName: '',
     userName: usernamestring,
     passwordHash: passwordstring,
-    email: ''};
+	email: ''};
+	
+	this.userService.setCookies(user);
 
     this.userService.login(user).subscribe(x => {
       if(x.id){
         this.userService.setUser(x);
-        this.userService.loggedIn = true;
+		this.userService.loggedIn = true;
       }
     });
   }
