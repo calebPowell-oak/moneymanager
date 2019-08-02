@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { MessageService } from './message.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class UserService {
 
 
   constructor(private http: HttpClient,
-    private messageService: MessageService) {
+	private messageService: MessageService,
+	private cookie: CookieService) {
     this.loggedIn = false;
     // this.currentUser = {
     //   id: '17',
@@ -81,6 +83,29 @@ export class UserService {
     else{
       return "problem connecting to server" + status;
     }
+  }
+
+  checkCookie(){
+	if(this.cookie.check('userinfo')){
+		let info: string = this.cookie.get('userinfo');
+		let signingUser: User = {
+			id: '',
+			firstName: '',
+			lastName: '',
+			userName: info.split('\n')[0],
+			passwordHash: info.split('\n')[1],
+			email: ''
+		}
+		this.login(signingUser);
+	}
+  }
+
+  makeCookie(user: User){
+	  this.cookie.set('userinfo', user.userName + '\n' + user.passwordHash);
+  }
+
+  deleteCookie(){
+	this.cookie.delete('userinfo');
   }
 
   // private handleLoginError<User> ( ){
