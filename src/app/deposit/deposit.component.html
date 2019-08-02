@@ -1,26 +1,24 @@
-<!-- <h3>Deposit</h3> -->
-    <!-- <div class="row">
-        <div class="col=sm"> -->
-            <!-- Select Account: -->
-           
-        <!-- </div>
-    </div> -->
-<!-- <div> -->
+<div class="row">
+    <div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
+        <h3 style="text-align: center;">Deposit</h3>
 
-    
-<!-- </div> -->
-<div class="row" style="margin-top: 10%; margin-bottom: auto;" >
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Make a Deposit</h5>
-      <p class="card-text">Select the account into which you would like to deposit funds.</p>
-      <select [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
-        <option *ngFor="let acc of accounts" [ngValue]="acc">
-            {{acc.id}}, ${{acc.balance}}
-        </option>
-        <p>
-            <input type="text" name="value" placeholder="enter amount" id='amount'/>
-            <input onclick="depositFunds()" type="button" value='Make_Deposit'/>
-        </p>
-    </select>
-  </div>
+        <p>Select Account:</p>
+        <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
+            <option *ngFor="let acc of userAccounts" [ngValue]="acc">
+                {{acc.id}}, ${{acc.balance}}
+            </option>
+        </select>
+        
+        <div>
+            <form class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" placeholder="enter amount" class="form-control" aria-label="Amount" id="amount">
+                </div>
+                <button id="amount" class="col-md-6 btn btn-primary offset-md-3" style="margin-top: 3%;" (click)="depositFunds()">Make Deposit</button>
+            </form>
+        </div>
+    </div>
+</div>

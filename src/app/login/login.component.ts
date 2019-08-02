@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/model/user';
 import { UserService } from '../../service/user.service';
+import { MessageService } from 'src/service/message.service';
+import { of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   // @Input('loginStatus') loggedIn: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    public messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -28,7 +32,7 @@ export class LoginComponent implements OnInit {
     email: ''};
 
     this.userService.login(user).subscribe(x => {
-      if(x.firstName != user.firstName){
+      if(x.id){
         this.userService.setUser(x);
         this.userService.loggedIn = true;
       }

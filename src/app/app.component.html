@@ -1,62 +1,61 @@
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
-        <a class="navbar-brand">BeanCounter</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarColor01">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item" *ngIf="userService.loggedIn" >
-              <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('deposit')">Deposit</button>
-            </li>
-            <li class="nav-item" *ngIf="userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('withdraw')">Withdraw</button>
-            </li>
-            <li class="nav-item" *ngIf="userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('addaccount')">Add Account</button>
-            </li>
-            <li class="nav-item" *ngIf="userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('deleteaccount')">Delete Account</button>
-            </li>
-            <li class="nav-item" *ngIf="userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('transactions')">Transactions</button>
-            </li>
-            <li class="nav-item" *ngIf="userService.loggedIn">
-              <button class="btn btn-primary" (click)="logout()">Log Out</button>
-            </li>
-            <li class="nav-item"*ngIf="!userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageNotLoggedIn('login')">Login</button>
-          </li>
-          <li class="nav-item"*ngIf="!userService.loggedIn">
-              <button class="btn btn-primary" (click)="setCurrentPageNotLoggedIn('create')">Register</button>
-          </li>
-          </ul>
-        </div>
-      </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar">
+    <a class="navbar-brand">BeanCounter</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
-       
-      <div class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
-        <div class="card col-md-4" style=" margin-left: 33%;"> 
-          <app-deposit *ngIf="currentPageLoggedIn =='deposit' && userService.loggedIn" ></app-deposit>
-          <app-withdraw *ngIf="currentPageLoggedIn =='withdraw' && userService.loggedIn"></app-withdraw>
-          <app-add-account *ngIf="currentPageLoggedIn == 'addaccount' && userService.loggedIn"></app-add-account>
-          <app-delete-account *ngIf="currentPageLoggedIn == 'deleteaccount' && userService.loggedIn"></app-delete-account>
-          <app-transactions *ngIf="currentPageLoggedIn == 'transactions' && userService.loggedIn"></app-transactions>
-          <app-login *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login'"></app-login>
-          <app-create-user *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'create'"></app-create-user>
-          <app-splash *ngIf="userService.loggedIn && currentPageLoggedIn == 'splash'"></app-splash>
-          <app-login-splash *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login-splash'"></app-login-splash>
-        </div>
-      </div>
-      <div *ngIf="this.messageService.message" class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
-        <div class="card col-md-4" style=" margin-left: 33%;">
-          <app-message-display></app-message-display>
-        </div>
-      </div>
-         
-
-  <button (click)="toggleLogin()">Toggle Login</button>
-  <div *ngIf="loggedIn">
-    Now Logged In
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="userService.loggedIn" >
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('deposit')">Deposit</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('withdraw')">Withdraw</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('addaccount')">Add Account</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('deleteaccount')">Delete Account</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('transactions')">Transfer</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('trans-dash')">History</button>
+        </li>
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="logout()">Log Out</button>
+        </li>
+        <li class="nav-item"*ngIf="!userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageNotLoggedIn('login')">Login</button>
+      </li>
+      <li class="nav-item"*ngIf="!userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageNotLoggedIn('create')">Register</button>
+      </li>
+    </ul>
   </div>
+</nav>
+
+      
+<app-deposit *ngIf="currentPageLoggedIn =='deposit' && userService.loggedIn" ></app-deposit>
+<app-withdraw *ngIf="currentPageLoggedIn =='withdraw' && userService.loggedIn"></app-withdraw>
+<app-add-account *ngIf="currentPageLoggedIn == 'addaccount' && userService.loggedIn"></app-add-account>
+<app-delete-account *ngIf="currentPageLoggedIn == 'deleteaccount' && userService.loggedIn"></app-delete-account>
+<app-transactions *ngIf="currentPageLoggedIn == 'transactions' && userService.loggedIn"></app-transactions>
+<app-login *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login'"></app-login>
+<app-create-user *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'create'"></app-create-user>
+<app-splash *ngIf="userService.loggedIn && currentPageLoggedIn == 'splash'"></app-splash>
+<app-login-splash *ngIf="!userService.loggedIn && currentPageNotLoggedIn == 'login-splash'"></app-login-splash>
+<app-transaction-dashboard *ngIf="userService.loggedIn && currentPageLoggedIn == 'trans-dash'"></app-transaction-dashboard>
+
+<!-- <div *ngIf="this.messageService.message" class="row" style="margin-top: 10%; margin-bottom: auto;" id="app-buttons">
+  <div class="card col-md-4 offset-md-4">
+    <app-message-display></app-message-display>
+  </div>
+</div> -->
+        
+<!-- <button (click)="toggleLogin()">Toggle Login</button>
+<div *ngIf="loggedIn">
+  Now Logged In
+</div> -->

@@ -16,20 +16,26 @@ export class TransactionService {
   }
 
   public transfer(fromAccountId: number, toAccountId: number, amount: number, userId: number): Observable<any>{
-    let transaction: Transaction = {fromAccountId:fromAccountId, toAccountId:toAccountId,
+    let transaction: Transaction = {transactionId: -1, fromAccountId:fromAccountId, toAccountId:toAccountId,
        amount:amount, memo: "this space left blank", userId: userId};
       console.log("making transfer");
     return this.http.post(this.baseUrl + "/api/transaction/transfer", transaction);
   }
 
   public deposit(toAccountId: number, amount: number, userId: number): Observable<any>{
-    let transaction: Transaction = {fromAccountId:9999, toAccountId:toAccountId,
+    let transaction: Transaction = {transactionId: -1, fromAccountId:9999, toAccountId:toAccountId,
       amount:amount, memo: "this space left blank", userId: userId};
-    console.log("making deposit");
+    console.log("making deposit for " + amount);
     return this.http.post(this.baseUrl + "/api/transaction/deposit", transaction);
   }
 
   public withdraw(toAccountId: string, amount: number): Observable<boolean>{
     return this.http.post<boolean>(this.baseUrl + "/api/transaction/withdraw/" + toAccountId, amount);
   }
+
+  public getTransactions(userId: string): Observable<Transaction[]>{
+    return this.http.get<Transaction[]>(this.baseUrl + "/api/transaction/user/" + userId)
+  }
+
+  
 }

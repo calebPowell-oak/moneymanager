@@ -1,15 +1,17 @@
-<div class="row" style="margin-top: 10%; margin-bottom: auto;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Create a New Account</h5>
-      <p class="card-text">Enter intial balance</p>
-      <input [(ngModel)]="newBalance" type="number">
-      <button type="button" (click)="makeNewAccount()" [disabled]="!newBalance">Create Account</button>
-    </div>
-  </div>
-<p *ngIf="createdAccount">
-Created Account #{{createdAccount.id}} with balance ${{createdAccount.balance}}
-</p>
-<br>
-<br>
+<div class="row">
+  	<div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
+      	<h3 style="text-align: center;">Add Account:</h3>
+      	<p>Enter intial balance:</p>
+      	<form class="form-group">
+          <input class="form-control" [(ngModel)]="newBalance" type="number" name="mandatory">
+          	<div style="margin-top: 2%;">
+              	<button class="col-md-6 offset-md-3 btn btn-primary" type="button" (click)="makeNewAccount()" [disabled]="!newBalance">Create Account</button>
+          	</div>
+      	</form>
+
+      	<p *ngIf="createdAccount">
+          Created Account #{{createdAccount.id}} with balance ${{createdAccount.balance}}
+      	</p>
+  	</div>
+</div>
 

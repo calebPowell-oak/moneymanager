@@ -27,7 +27,7 @@ export class AccountServiceService {
   }
 
   public createAccount(balance: number, userid: number): Observable<Account>{
-    let newAccount: Account = {id: 1, balance: balance, userId: userid}
+    let newAccount: Account = {id: 0, balance: balance, userId: userid}
     console.log("creating new account with userid:" + newAccount.userId);
     return this.http.post<Account>(this.baseUrl + "/api/accounts", newAccount);
   }
