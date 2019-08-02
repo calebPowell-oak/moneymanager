@@ -97,7 +97,9 @@ export class UserService {
 			passwordHash: info.split('\n')[1],
 			email: ''
 		}
-		this.login(signingUser);
+		this.login(signingUser).subscribe(x => {
+			this.setUser(x);
+		})
 	} else console.log('no existing cookie');
   }
 
