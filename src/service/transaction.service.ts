@@ -29,8 +29,10 @@ export class TransactionService {
     return this.http.post(this.baseUrl + "/api/transaction/deposit", transaction);
   }
 
-  public withdraw(toAccountId: string, amount: number): Observable<boolean>{
-    return this.http.post<boolean>(this.baseUrl + "/api/transaction/withdraw/" + toAccountId, amount);
+  public withdraw(fromAccountId: number, amount: number, userId: number): Observable<boolean>{
+    let withdrawl: Transaction = {transactionId: -1, fromAccountId: fromAccountId, toAccountId:-1,
+      amount:amount, memo:"to be implemented later",userId: userId}
+    return this.http.post<boolean>(this.baseUrl + "/api/transaction/withdraw/", withdrawl);
   }
 
   public getTransactions(userId: string): Observable<Transaction[]>{
