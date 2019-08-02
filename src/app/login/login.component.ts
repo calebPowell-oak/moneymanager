@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     userName: usernamestring,
     passwordHash: passwordstring,
 	email: ''};
-	
+
 	this.userService.makeCookie(user);
 
     this.userService.login(user).subscribe(x => {
