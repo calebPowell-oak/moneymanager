@@ -109,9 +109,9 @@ export class UserService {
   deleteCookie(){
 	this.cookie.delete('userinfo');
 	if(this.cookie.check('userinfo')){
-		console.log('deleted cookie: userinfo');
-	} else {
 		console.log('cookie was not deleted');
+	} else {
+		console.log('deleted cookie: userinfo');
 	}
   }
 
