@@ -88,6 +88,7 @@ export class UserService {
   checkCookie(){
 	if(this.cookie.check('userinfo')){
 		let info: string = this.cookie.get('userinfo');
+		console.log('found existing cookie for: ' + info.split('\n')[0]);
 		let signingUser: User = {
 			id: '',
 			firstName: '',
@@ -97,15 +98,21 @@ export class UserService {
 			email: ''
 		}
 		this.login(signingUser);
-	}
+	} else console.log('no existing cookie');
   }
 
   makeCookie(user: User){
 	  this.cookie.set('userinfo', user.userName + '\n' + user.passwordHash);
+	  console.log('stored cookie: ' + user.userName + '\n' + user.passwordHash);
   }
 
   deleteCookie(){
 	this.cookie.delete('userinfo');
+	if(this.cookie.check('userinfo')){
+		console.log('deleted cookie: userinfo');
+	} else {
+		console.log('cookie was not deleted');
+	}
   }
 
   // private handleLoginError<User> ( ){
