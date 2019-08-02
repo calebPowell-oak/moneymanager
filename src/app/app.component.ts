@@ -64,6 +64,7 @@ export class AppComponent {
   }
 
   logout(){
+	  this.userService.deleteCookie();
     this.messageService.clearMessage();
     this.currentPageLoggedIn = 'splash';
     this.currentPageNotLoggedIn = 'login-splash';
