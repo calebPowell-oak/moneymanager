@@ -32,7 +32,7 @@ export class AppComponent {
 
   ngOnInit() {
 	  this.userService.checkCookie();
-   this.loggedIn = this.userService.loggedIn; 
+   this.loggedIn = this.userService.loggedIn;
     // this.toggleLogin();
     // this.userService.setUser(this.caleb);
   }
