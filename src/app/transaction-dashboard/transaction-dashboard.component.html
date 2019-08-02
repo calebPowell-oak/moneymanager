@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 custom_panel" style="margin-top: 5%;">
+        <p> still don't work</p>
+        <ul *ngIf="userTransactions">
+            <li *ngFor="let transaction of userTransactions">
+                <div class="row">
+                    <div class="col-sm-4">{{transaction.transactionId}}</div>
+                    <div class="col-sm-4">{{transaction.amount}}</div>
+                    <div class="col-sm-4">{{transaction.memo}}</div>
+                </div>
+            </li> 
+        </ul>
+    </div>
+</div>

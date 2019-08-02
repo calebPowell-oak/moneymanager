@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplashComponent } from './splash/splash.component';
 import { LoginSplashComponent } from './login-splash/login-splash.component';
 import { MessageDisplayComponent } from './message-display/message-display.component';
+import { TransactionDashboardComponent } from './transaction-dashboard/transaction-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MessageDisplayComponent } from './message-display/message-display.compo
     TransactionsComponent,
     SplashComponent,
     LoginSplashComponent,
-    MessageDisplayComponent
+    MessageDisplayComponent,
+    TransactionDashboardComponent
   ],
   imports: [
     BrowserModule,
