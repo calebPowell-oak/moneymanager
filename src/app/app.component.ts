@@ -31,7 +31,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-   this.loggedIn = this.userService.loggedIn; 
+	  this.userService.checkCookie();
+   this.loggedIn = this.userService.loggedIn;
     // this.toggleLogin();
     // this.userService.setUser(this.caleb);
   }
@@ -63,6 +64,7 @@ export class AppComponent {
   }
 
   logout(){
+	  this.userService.deleteCookie();
     this.messageService.clearMessage();
     this.currentPageLoggedIn = 'splash';
     this.currentPageNotLoggedIn = 'login-splash';
