@@ -17,6 +17,12 @@
                     </div>
                     <input type="number" placeholder="enter amount" class="form-control" aria-label="Amount" id="amount">
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Memo</span>
+                    </div>
+                    <input type="text" placeholder="enter text" class="form-control" aria-label="memo" id="deposit-memo" [(ngModel)]="memo" name="deposit-memo">
+                </div>
                 <button id="amount" class="col-md-6 btn btn-primary offset-md-3" style="margin-top: 3%;" (click)="depositFunds()">Make Deposit</button>
             </form>
         </div>
