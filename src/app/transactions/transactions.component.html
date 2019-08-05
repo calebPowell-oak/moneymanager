@@ -11,7 +11,7 @@
         
         <label><p>To Account:</p></label>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
-            <option *ngFor="let acc of accounts" [ngValue]="acc">
+            <option *ngFor="let acc of filterAccountFromAccountList(currentAccountFrom, userAccounts)" [ngValue]="acc">
                 {{acc.id}}, ${{acc.balance}}
             </option>
         </select>
