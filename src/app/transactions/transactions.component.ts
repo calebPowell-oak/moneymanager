@@ -15,11 +15,12 @@ export class TransactionsComponent implements OnInit {
 
   //account: Account;
   accounts: Account[];
-  userAccounts: Account[];
+  userAccounts: Account[] = [];
   currentAccountFrom: Account;
   currentAccountTo: Account;
   user: User;
   transferAmount: number;
+  memo: string;
 
   constructor(private accountServiceService: AccountServiceService,
     private userService: UserService,
@@ -69,10 +70,11 @@ export class TransactionsComponent implements OnInit {
 
   makeTransaction(){
     this.transactionService.transfer(this.currentAccountFrom.id, 
-      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId).subscribe(()=> {
+      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId, this.memo).subscribe(()=> {
         this.getAccounts(); 
         this.getUserAccounts(); 
         delete this.transferAmount;
+        delete this.memo;
       });
   }
 
