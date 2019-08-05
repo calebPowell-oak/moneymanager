@@ -69,7 +69,11 @@ export class TransactionsComponent implements OnInit {
 
   makeTransaction(){
     this.transactionService.transfer(this.currentAccountFrom.id, 
-      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId).subscribe(()=> {this.getAccounts(); this.getUserAccounts();});
+      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId).subscribe(()=> {
+        this.getAccounts(); 
+        this.getUserAccounts(); 
+        delete this.transferAmount;
+      });
   }
 
   filterAccountFromAccountList(account: Account, accountList: Account[]): Account[]{
