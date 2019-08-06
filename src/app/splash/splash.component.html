@@ -1,9 +1,14 @@
 <div class="row">
 	<div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
 		<div style="margin: 3%;">
-			<h3 class="card-title">Welcome</h3>
-			<p class="card-text">Welcome to BeanCounter!  We are the premier financial management app Zip Code Wilmington.</p>
-			<p class="card-text">Please log in or register</p>
+			<h3 class="card-title">Welcome {{userService.getUser().firstName}}</h3>
+			<!-- <p class="card-text">Welcome to BeanCounter!  We are the premier financial management app Zip Code Wilmington.</p> -->
+			<!-- <p class="card-text">Please log in or register</p> -->
+			<ul>
+				<li *ngFor="let account of accounts">
+					<p class="card-text">Account #{{account.id}}: ${{account.balance}}</p>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
