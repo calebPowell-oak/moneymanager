@@ -5,7 +5,7 @@
         <label><p>From Account:</p></label>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountFrom" (ngModelChange)="setCurrentAccountFrom(currentAccountFrom)">
             <option *ngFor="let userAcc of userAccounts" [ngValue]="userAcc">
-                {{userAcc.id}}, ${{userAcc.balance}}
+              Account no. {{userAcc.id}}, Balance ${{userAcc.balance}}
             </option>
         </select>
         

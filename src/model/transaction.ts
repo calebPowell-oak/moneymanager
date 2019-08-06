@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export class Transaction {
     transactionId: number;
     fromAccountId: number;
@@ -5,4 +7,5 @@ export class Transaction {
     amount: number;
     memo: string;
     userId: number;
+    localDateTime: Date; 
 }
