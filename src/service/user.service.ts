@@ -42,7 +42,7 @@ export class UserService {
     return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser).pipe(
       catchError(err => {
         this.messageService.setMessage(this.getLoginMessage(err.status));
-       return of(new User())
+        return of(new User())
       })
     );
   }
@@ -76,12 +76,15 @@ export class UserService {
     }
   }
 
-  getCreateUserMessage(status: number): string{
-    if(status == 400){
-      return "Username is already taken";
+  getCreateUserMessage(status: number){
+    if(status == 418){
+      return "Username already exists";
+    }
+    else if(status == 400){
+      return "Invalid form input";
     }
     else{
-      return "problem connecting to server" + status;
+      return "problem connecting to server, error code " + status;
     }
   }
 
