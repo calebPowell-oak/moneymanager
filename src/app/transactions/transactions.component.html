@@ -11,14 +11,25 @@
         
         <label><p>To Account:</p></label>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
-            <option *ngFor="let acc of accounts" [ngValue]="acc">
-               Account no. {{acc.id}}, Balance ${{acc.balance}}
+            <option *ngFor="let acc of filterAccountFromAccountList(currentAccountFrom, userAccounts)" [ngValue]="acc">
+                {{acc.id}}, ${{acc.balance}}
             </option>
         </select>
         
-        <label><p>Amount Transfered:</p></label>
+        <!-- <label><p>Amount Transfered:</p></label> -->
         <form class="form-group">
-            <input class="form-control" [(ngModel)]="transferAmount" type="number" placeholder="Transfer Amount" name="transferAmountInput">
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input class="form-control" [(ngModel)]="transferAmount" type="number" placeholder="Transfer Amount" name="transferAmountInput">
+            </div>
+            <div class= "input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text">Memo</span>
+                </div>
+                <input class="form-control" [(ngModel)]="memo" type="text" placeholder="Enter text" name="transfer-memo">
+            </div>
             <button type="submit" [disabled]="!currentAccountFrom || !currentAccountTo || !transferAmount" 
                 class="btn btn-primary col-md-6 offset-md-3" style="margin-top: 2%;" (click)="makeTransaction()">Transfer</button>
         </form>

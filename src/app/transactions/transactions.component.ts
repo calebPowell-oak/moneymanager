@@ -15,11 +15,12 @@ export class TransactionsComponent implements OnInit {
 
   //account: Account;
   accounts: Account[];
-  userAccounts: Account[];
+  userAccounts: Account[] = [];
   currentAccountFrom: Account;
   currentAccountTo: Account;
   user: User;
   transferAmount: number;
+  memo: string;
 
   constructor(private accountServiceService: AccountServiceService,
     private userService: UserService,
@@ -47,6 +48,9 @@ export class TransactionsComponent implements OnInit {
 
   setCurrentAccountFrom(acc: Account): void{
     this.currentAccountFrom = acc;
+    if(this.currentAccountFrom === this.currentAccountTo){
+      delete this.currentAccountTo;
+    }
   }
 
   setCurrentAccountTo(acc: Account): void{
@@ -66,6 +70,16 @@ export class TransactionsComponent implements OnInit {
 
   makeTransaction(){
     this.transactionService.transfer(this.currentAccountFrom.id, 
-      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId).subscribe(()=> {this.getAccounts(); this.getUserAccounts();});
+      this.currentAccountTo.id, this.transferAmount, this.currentAccountFrom.userId, this.memo).subscribe(()=> {
+        this.getAccounts(); 
+        this.getUserAccounts(); 
+        delete this.transferAmount;
+        delete this.memo;
+      });
+  }
+
+  filterAccountFromAccountList(account: Account, accountList: Account[]): Account[]{
+    return accountList.filter(x => x !== account);
+    //return this.userAccounts
   }
 }

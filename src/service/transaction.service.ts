@@ -15,22 +15,24 @@ export class TransactionService {
     // this.transactionUrl="http://moneyapp-env.njfvb73f7f.us-east-2.elasticbeanstalk.com/transactions";
   }
 
-  public transfer(fromAccountId: number, toAccountId: number, amount: number, userId: number): Observable<any>{
+  public transfer(fromAccountId: number, toAccountId: number, amount: number, userId: number, memo: string): Observable<any>{
     let transaction: Transaction = {transactionId: -1, fromAccountId:fromAccountId, toAccountId:toAccountId,
-       amount:amount, memo: "this space left blank", userId: userId};
+       amount:amount, memo: memo, userId: userId};
       console.log("making transfer");
     return this.http.post(this.baseUrl + "/api/transaction/transfer", transaction);
   }
 
-  public deposit(toAccountId: number, amount: number, userId: number): Observable<any>{
-    let transaction: Transaction = {transactionId: -1, fromAccountId:9999, toAccountId:toAccountId,
-      amount:amount, memo: "this space left blank", userId: userId};
+  public deposit(toAccountId: number, amount: number, userId: number, memo:string): Observable<any>{
+    let transaction: Transaction = {transactionId: -1, fromAccountId:undefined, toAccountId:toAccountId,
+      amount:amount, memo: memo, userId: userId};
     console.log("making deposit for " + amount);
     return this.http.post(this.baseUrl + "/api/transaction/deposit", transaction);
   }
 
-  public withdraw(toAccountId: string, amount: number): Observable<boolean>{
-    return this.http.post<boolean>(this.baseUrl + "/api/transaction/withdraw/" + toAccountId, amount);
+  public withdraw(fromAccountId: number, amount: number, userId: number, memo: string): Observable<boolean>{
+    let withdrawl: Transaction = {transactionId: -1, fromAccountId: fromAccountId, toAccountId:-1,
+      amount:amount, memo: memo,userId: userId}
+    return this.http.post<boolean>(this.baseUrl + "/api/transaction/withdraw/", withdrawl);
   }
 
   public getTransactions(userId: string): Observable<Transaction[]>{
