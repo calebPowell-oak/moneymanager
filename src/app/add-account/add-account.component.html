@@ -1,9 +1,20 @@
 <div class="row">
   	<div class="card col-md-4 offset-md-4 custom_panel" style="margin-top: 5%;">
       	<h3 style="text-align: center;">Add Account:</h3>
-      	<p>Enter intial balance:</p>
+      	<!-- <p>Enter intial balance:</p> -->
       	<form class="form-group">
-          <input class="form-control" [(ngModel)]="newBalance" type="number" name="mandatory">
+		  	<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					  <span class="input-group-text">Intitial Balance: $</span>
+				  </div>
+		  		<input class="form-control" [(ngModel)]="newBalance" type="number" name="mandatory">
+			</div>
+		  	<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				  <span class="input-group-text">Description:</span>
+			  </div>
+			  <input [(ngModel)]="purpose" type="text" placeholder="Account Purpose" class="form-control" aria-label="purpose" name="account-purpose">
+		  	</div>
           	<div style="margin-top: 2%;">
               	<button class="col-md-6 offset-md-3 btn btn-primary" type="button" (click)="makeNewAccount()" [disabled]="!newBalance">Create Account</button>
           	</div>

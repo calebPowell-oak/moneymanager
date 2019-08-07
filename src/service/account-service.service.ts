@@ -26,8 +26,8 @@ export class AccountServiceService {
     return this.http.get<Account[]>(this.baseUrl + "/api/accounts/user/" + userid);
   }
 
-  public createAccount(balance: number, userid: number): Observable<Account>{
-    let newAccount: Account = {id: 0, balance: balance, userId: userid}
+  public createAccount(balance: number, userid: number, purpose: string): Observable<Account>{
+    let newAccount: Account = {id: 0, balance: balance, userId: userid, purpose:purpose}
     console.log("creating new account with userid:" + newAccount.userId);
     return this.http.post<Account>(this.baseUrl + "/api/accounts", newAccount);
   }
