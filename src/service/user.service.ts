@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user';
+import { User} from '../model/user';
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { MessageService } from './message.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,9 @@ export class UserService {
   baseUrl = environment.baseUrl;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+	private messageService: MessageService,
+	private cookie: CookieService) {
     this.loggedIn = false;
     // this.currentUser = {
     //   id: '17',
@@ -33,11 +37,24 @@ export class UserService {
 
   login(tryUser: User): Observable<User>{
     console.log(this.baseUrl);
-    return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser);
+    // let badUser: User;
+    // badUser.id = '-1';
+    return this.http.post<User>(this.baseUrl + '/api/users/login', tryUser).pipe(
+      catchError(err => {
+        this.messageService.setMessage(this.getLoginMessage(err.status));
+        return of(new User())
+      })
+    );
   }
 
   createUser(newUser: User): Observable<User>{
-    return this.http.post<User>(this.baseUrl + '/api/users', newUser);
+    return this.http.post<User>(this.baseUrl + '/api/users', newUser).pipe(
+      catchError(err =>{
+        this.messageService.setMessage(this.getCreateUserMessage(err.status));
+        console.log("user service message: " + this.messageService.message)
+        return of(new User())
+      })
+    );
   }
 
   setUser(user: User){
@@ -50,10 +67,74 @@ export class UserService {
     this.loggedIn = false;
   }
 
-  private handleError<T> (operation = 'operation', result?: T){
-    return(error: any): Observable<T> => {
-      console.error(error);
-      return of(result as T);
+  getLoginMessage(status: number): string{
+    if(status == 422){
+      return "invalid username or password";
+    }
+    else{
+      return "problem connecting to server";
     }
   }
+
+  getCreateUserMessage(status: number){
+    if(status == 418){
+      return "Username already exists";
+    }
+    else if(status == 400){
+      return "Invalid form input";
+    }
+    else{
+      return "problem connecting to server, error code " + status;
+    }
+  }
+
+  checkCookie(){
+	  if(this.cookie.check('userinfo')){
+		  let info: string = this.cookie.get('userinfo');
+		  //console.log('found existing cookie for: ' + info.split('\n')[0]);
+		  let signingUser: User = {
+			  id: '',
+			  firstName: '',
+			  lastName: '',
+			  userName: info.split('\n')[0],
+			  passwordHash: info.split('\n')[1],
+			  email: ''
+		  }
+		  this.login(signingUser).subscribe(x => {
+        if(x.userName){
+          this.setUser(x);
+        }
+		  });
+	  } //else console.log('no existing cookie');
+  }
+
+  makeCookie(user: User){
+	  this.cookie.set('userinfo', user.userName + '\n' + user.passwordHash);
+	  //console.log('stored cookie: ' + user.userName + '\n' + user.passwordHash);
+  }
+
+  deleteCookie(){
+	  this.cookie.delete('userinfo');
+	  // if(this.cookie.check('userinfo')){
+		//   console.log('cookie was not deleted');
+	  // } else {
+		//   console.log('deleted cookie: userinfo');
+	  // }
+  }
+
+  // private handleLoginError<User> ( ){
+  //   let badUser = new User();
+  //   badUser = {
+  //   id: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   userName: '',
+  //   passwordHash: '',
+  //   email: ''};
+  //   }
+  //   return(error: any): Observable<User> => {
+  //     console.error(error);
+  //     return of(badUser);
+  //   }
+  // }
 }

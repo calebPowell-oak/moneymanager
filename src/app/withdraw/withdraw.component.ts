@@ -16,6 +16,8 @@ export class WithdrawComponent implements OnInit {
   selectedAccount: Account;
   userAccounts: Account[];
   withdrawAmount: number;
+  memo: string;
+  localDateTime: Date; 
 
   constructor(private userService: UserService,
     private accountService: AccountServiceService,
@@ -31,7 +33,11 @@ export class WithdrawComponent implements OnInit {
   }
 
   withdraw(){
-    this.transactionService.withdraw(this.currentUser.id, this.withdrawAmount).subscribe(() => this.getUserAccounts())
+    this.transactionService.withdraw(this.selectedAccount.id, this.withdrawAmount, +this.currentUser.id, this.memo, this.localDateTime).subscribe(() => {
+      this.getUserAccounts();
+      delete this.withdrawAmount;
+      delete this.memo;
+    });
   }
 
 }

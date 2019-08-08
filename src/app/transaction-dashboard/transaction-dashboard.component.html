@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="card col-md-10 offset-md-1 custom_panel" style="margin-top: 5%;">
+        <div class="table-responsive-md"  *ngIf="userTransactions" class="mx-auto" style="padding-top: 2%">
+            <table class="table table-striped table-light" style="margin: 5%" style="align-content: center" >
+                <thead>
+                    <tr>
+                        <th scope="col">Id #</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Memo</th>
+                        <th scope="col">Time & Date</th>
+                    </tr>
+                </thead>
+                <tbody class="table table-striped">
+                        <tr *ngFor="let transaction of userTransactions">
+                            <td  data-label="Transaction ID">{{transaction.transactionId}}</td>
+                            <td  data-label="From">{{transaction.fromAccountId}}</td>
+                            <td  data-label="To">{{transaction.toAccountId}}</td>
+                            <td  data-label="Amount">{{transaction.amount}}</td>
+                            <td  data-label="Memo">{{transaction.memo}}</td> 
+                            <td  data-label="Time and Date"> {{ transaction.localDateTime }}
+                        </tr>
+                </tbody>
+            </table>
+           
+                <!-- <div class="row">
+                    <div class="col-sm-4">{{transaction.transactionId}}</div>
+                    <div class="col-sm-4">{{transaction.amount}}</div>
+                    <div class="col-sm-4">{{transaction.memo}}</div>
+                </div>
+            </li> 
+        </ul>
+    </div>
+</div> -->

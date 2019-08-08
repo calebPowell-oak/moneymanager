@@ -17,6 +17,8 @@ export class DepositComponent implements OnInit {
   userAccounts: Account[];
   currentAccountTo: Account;
   user: User;
+  memo: string;
+  localDateTime: Date; 
 
   constructor(private accountServiceService: AccountServiceService,
               private userService: UserService,
@@ -47,14 +49,18 @@ export class DepositComponent implements OnInit {
 
   depositFunds(): void {
 
-    const accountId: number = +((document.getElementById('currentAccountTo') as HTMLInputElement).value);
+    // const accountId: number = +((document.getElementById('currentAccountTo') as HTMLInputElement).value);
     const amount: number = +((document.getElementById('amount') as HTMLInputElement).value);
 
-    console.log('hello world from d.c.ts');
-
-    console.log(accountId);
-    console.log(amount);
-    console.log(Number(this.user.id));
-    this.transactionService.deposit(accountId, amount, +(this.user.id));
+    //console.log('hello world from d.c.ts');
+    let accountId = this.currentAccountTo.id;
+    //console.log(accountId);
+    //console.log(amount);
+    //console.log(Number(this.user.id));
+    this.transactionService.deposit(accountId, amount, +(this.user.id), this.memo, this.localDateTime).subscribe(()=>{
+      this.getUserAccounts();
+      (document.getElementById('amount') as HTMLInputElement).value = "";
+      delete this.memo;
+    });
 }
 }

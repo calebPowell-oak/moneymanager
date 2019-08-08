@@ -31,36 +31,41 @@ export class AppComponent {
   }
 
   ngOnInit() {
-   this.loggedIn = this.userService.loggedIn; 
+	  this.userService.checkCookie();
+   this.loggedIn = this.userService.loggedIn;
     // this.toggleLogin();
     // this.userService.setUser(this.caleb);
   }
 
-  toggleLogin(){
-    if(this.loggedIn){
-      this.loggedIn = false;
-      this.currentUser = null;
-      this.userService.clearUser();
-      //console.log("if"); 
-    } else {
-      this.loggedIn = true;
-      this.currentUser = this.caleb;
-      this.userService.setUser(this.caleb); 
-      //console.log("else");
-    }
-    //console.log("userService.loggedIn = " + this.userService.loggedIn);
-  }
+  // toggleLogin(){
+  //   if(this.loggedIn){
+  //     this.loggedIn = false;
+  //     this.currentUser = null;
+  //     this.userService.clearUser();
+  //     //console.log("if"); 
+  //   } else {
+  //     this.loggedIn = true;
+  //     this.currentUser = this.caleb;
+  //     this.userService.setUser(this.caleb); 
+  //     //console.log("else");
+  //   }
+  //   //console.log("userService.loggedIn = " + this.userService.loggedIn);
+  // }
 
   setCurrentPageLoggedIn(newPage: string){
+    this.messageService.clearMessage();
     this.currentPageLoggedIn = newPage;
     // this.currentPage = newPage; 
   }
 
   setCurrentPageNotLoggedIn(newPage: string){
+    this.messageService.clearMessage();
     this.currentPageNotLoggedIn = newPage; 
   }
 
   logout(){
+	  this.userService.deleteCookie();
+    this.messageService.clearMessage();
     this.currentPageLoggedIn = 'splash';
     this.currentPageNotLoggedIn = 'login-splash';
     this.userService.clearUser();
