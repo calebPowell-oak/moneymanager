@@ -5,14 +5,14 @@
         <label><p>From Account:</p></label>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountFrom" (ngModelChange)="setCurrentAccountFrom(currentAccountFrom)">
             <option *ngFor="let userAcc of userAccounts" [ngValue]="userAcc">
-              Account no. {{userAcc.id}}, Balance ${{userAcc.balance}}<span *ngIf="userAcc.purpose">: {{userAcc.purpose}}</span>
+              Acct: {{userAcc.id}} Bal: ${{userAcc.balance}}<span *ngIf="userAcc.purpose"> -- {{userAcc.purpose}}</span>
             </option>
         </select>
         
         <label><p>To Account:</p></label>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="currentAccountTo" (ngModelChange)="setCurrentAccountTo(currentAccountTo)">
             <option *ngFor="let acc of filterAccountFromAccountList(currentAccountFrom, userAccounts)" [ngValue]="acc">
-                {{acc.id}}, ${{acc.balance}}<span *ngIf="acc.purpose">: {{acc.purpose}}</span>
+              Acct: {{acc.id}}: Bal: ${{acc.balance}}<span *ngIf="acc.purpose"> -- {{acc.purpose}}</span>
             </option>
         </select>
         
