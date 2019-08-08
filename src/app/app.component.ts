@@ -37,20 +37,20 @@ export class AppComponent {
     // this.userService.setUser(this.caleb);
   }
 
-  toggleLogin(){
-    if(this.loggedIn){
-      this.loggedIn = false;
-      this.currentUser = null;
-      this.userService.clearUser();
-      //console.log("if"); 
-    } else {
-      this.loggedIn = true;
-      this.currentUser = this.caleb;
-      this.userService.setUser(this.caleb); 
-      //console.log("else");
-    }
-    //console.log("userService.loggedIn = " + this.userService.loggedIn);
-  }
+  // toggleLogin(){
+  //   if(this.loggedIn){
+  //     this.loggedIn = false;
+  //     this.currentUser = null;
+  //     this.userService.clearUser();
+  //     //console.log("if"); 
+  //   } else {
+  //     this.loggedIn = true;
+  //     this.currentUser = this.caleb;
+  //     this.userService.setUser(this.caleb); 
+  //     //console.log("else");
+  //   }
+  //   //console.log("userService.loggedIn = " + this.userService.loggedIn);
+  // }
 
   setCurrentPageLoggedIn(newPage: string){
     this.messageService.clearMessage();
