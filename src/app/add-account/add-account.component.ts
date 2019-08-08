@@ -15,6 +15,7 @@ export class AddAccountComponent implements OnInit {
   newBalance: number;
   accountCreated: boolean = false;
   createdAccount: Account;
+  purpose: string;
 
   constructor(private userService: UserService,
     private accountService: AccountServiceService) { }
@@ -25,8 +26,9 @@ export class AddAccountComponent implements OnInit {
 
   makeNewAccount(){
     console.log("button pressed");
-    this.accountService.createAccount(this.newBalance, +this.currentUser.id)
-    .subscribe(account => this.createdAccount = account);
+    this.accountService.createAccount(this.newBalance, +this.currentUser.id, this.purpose).subscribe(
+      account => this.createdAccount = account
+      );
   }
 
 }

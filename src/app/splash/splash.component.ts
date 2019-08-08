@@ -21,7 +21,9 @@ export class SplashComponent implements OnInit {
   }
 
   getAccounts(){
-    this.accountService.getAccountsByUser(this.userService.getUser().id).subscribe(userAccounts => this.accounts = userAccounts);
+    this.accountService.getAccountsByUser(this.userService.getUser().id).subscribe(
+      userAccounts => this.accounts = userAccounts
+      );
   }
 
 }

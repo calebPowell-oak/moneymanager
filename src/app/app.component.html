@@ -6,6 +6,9 @@
   
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="userService.loggedIn">
+          <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('splash')">Summary</button>
+        </li>
         <li class="nav-item" *ngIf="userService.loggedIn" >
           <button class="btn btn-primary" (click)="setCurrentPageLoggedIn('deposit')">Deposit</button>
         </li>

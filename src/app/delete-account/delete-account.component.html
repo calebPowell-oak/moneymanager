@@ -5,7 +5,7 @@
         </h3>
         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="selectedAccount">
             <option *ngFor="let account of userAccounts" [ngValue]="account">
-                acc # {{account.id}}, ${{account.balance}}
+            Acct: {{account.id}} Bal: ${{account.balance}}<span *ngIf="account.purpose"> -- {{account.purpose}}</span>
             </option>
         </select>
         
